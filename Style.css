@@ -16,7 +16,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     width: 100%;
-    max-width: 900px; /* Maximum width for the container */
+    /* Adjusted max-width for 1920x1080 screens */
+    max-width: 1200px; /* Increased from 900px to better fit larger screens */
     padding: 20px;
     box-sizing: border-box;
 }
@@ -66,7 +67,8 @@ body {
 
 .col {
     flex: 1; /* Allow columns to grow and shrink */
-    min-width: 300px; /* Minimum width before wrapping */
+    /* Adjusted min-width for columns on larger screens */
+    min-width: 350px; /* Increased from 300px for larger displays */
     background-color: #f9f9f9; /* Slightly off-white for columns */
     border-radius: 6px;
     padding: 15px;
@@ -144,7 +146,6 @@ body {
 /* Specific styling for control items to match first image */
 .control-row {
     justify-content: flex-start;
-    /* Removed gap: 20px; as cols handle padding/margin */
 }
 
 .control-item-col {
@@ -160,7 +161,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* padding: 5px 0; Removed as parent col has padding */
 }
 
 
@@ -246,7 +246,7 @@ input:checked + .slider:before {
 .sensor-row {
     align-items: stretch; /* Make all items in the row have the same height */
     justify-content: flex-start; /* Align sensor cards to the left */
-    gap: 10px; /* Reduce gap slightly for more cards */
+    gap: 15px; /* Revert gap back to 15px for wider spacing on large screens */
 }
 
 .sensor-card {
@@ -254,9 +254,9 @@ input:checked + .slider:before {
     border-radius: 6px;
     padding: 10px;
     text-align: center;
-    width: calc((100% - (6 * 10px) - (20px)) / 7); /* Roughly 6 cards + info box */
-    /* Adjust width to accommodate 6 cards + info box more evenly */
-    min-width: 100px; /* Minimum width for each card to avoid squishing */
+    /* Adjusted width for more flexible sizing on large screens, allowing more cards per row if possible */
+    width: calc((100% - (6 * 15px)) / 7); /* Adjusted for 6 cards + info box with 15px gap */
+    min-width: 120px; /* Ensure they don't get too small */
     box-sizing: border-box;
     flex-grow: 1; /* Allow cards to grow if space permits */
     display: flex; /* Use flexbox for internal alignment */
@@ -280,7 +280,7 @@ input:checked + .slider:before {
 
 .sensor-info-col {
     flex: 1; /* Allow it to take available space */
-    min-width: 180px; /* Minimum width for info box */
+    min-width: 200px; /* Increased min-width for info box on large screens */
     padding: 0; /* Remove padding as inner box has it */
     background-color: transparent; /* Remove background as inner box has it */
     box-shadow: none; /* Remove shadow */
@@ -306,14 +306,27 @@ input:checked + .slider:before {
 
 
 /* Responsive Design - Media Queries */
-@media (max-width: 768px) {
-    .row {
-        flex-direction: column; /* Stack columns vertically on smaller screens */
+/* No specific changes for > 1200px needed, as max-width handles it */
+
+@media (max-width: 1200px) {
+    .container {
+        /* This media query can be used to set max-width for screens smaller than 1920 but larger than 768 */
+        max-width: 900px; /* Revert to 900px for smaller desktops/laptops */
     }
 
     .col {
-        min-width: unset; /* Remove min-width to allow full width */
-        width: 100%; /* Take full width */
+        min-width: 300px; /* Adjust min-width for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stacks columns vertically on smaller screens */
+    }
+
+    .col {
+        min-width: unset; /* Removes min-width to allow full width */
+        width: 100%; /* Takes full width */
     }
 
     /* Specific adjustments for control items on smaller screens */
