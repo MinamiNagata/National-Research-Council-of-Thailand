@@ -1,3 +1,372 @@
-.h1{
-    border: 0cap;
+/* General Body and Container Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0; /* Light grey background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to the top of the viewport */
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.container {
+    background-color: #ffffff; /* White background for the main content area */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%;
+    max-width: 900px; /* Maximum width for the container */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+.header {
+    background-color: #4CAF50; /* Green header background */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.header p {
+    margin: 5px 0 0;
+    font-size: 1.1em;
+}
+
+/* Section Styling */
+.section {
+    background-color: #e0e0e0; /* Lighter grey for individual sections */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for a recessed look */
+}
+
+.section-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Flexbox for Rows and Columns */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 15px; /* Space between flex items */
+}
+
+.col {
+    flex: 1; /* Allow columns to grow and shrink */
+    min-width: 300px; /* Minimum width before wrapping */
+    background-color: #f9f9f9; /* Slightly off-white for columns */
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Lighter shadow for inner columns */
+    box-sizing: border-box;
+}
+
+/* Specific Styles for Graph and Log Display */
+.history-graph,
+.system-log-display {
+    background-color: #333; /* Dark background as seen in the image */
+    height: 200px; /* Fixed height for visual consistency */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaa; /* Light grey text for placeholders */
+    font-size: 0.9em;
+}
+
+/* Notification List Styling */
+.notification-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.status-indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; /* Circle shape */
+    display: inline-block;
+    margin-right: 10px;
+    flex-shrink: 0; /* Prevent the dot from shrinking */
+}
+
+.status-indicator.red { background-color: #ff4d4d; } /* Red for critical */
+.status-indicator.yellow { background-color: #ffd700; } /* Yellow for warning */
+.status-indicator.green { background-color: #5cb85c; } /* Green for normal */
+
+/* System Control Section Styling */
+.section-title-with-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.control-mode-toggle {
+    background-color: #d0d0d0; /* Grey background for toggle buttons */
+    border-radius: 20px;
+    padding: 5px;
+    display: inline-flex; /* Arrange buttons side-by-side */
+    gap: 5px;
+}
+
+.control-mode-toggle button {
+    background-color: transparent;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #555;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.control-mode-toggle button.active {
+    background-color: #4CAF50; /* Green for active button */
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for active state */
+}
+
+/* Specific styling for control items to match first image */
+.control-row {
+    justify-content: flex-start;
+    /* Removed gap: 20px; as cols handle padding/margin */
+}
+
+.control-item-col {
+    flex: unset; /* Override default flex behavior */
+    width: auto; /* Take only necessary width */
+    min-width: 120px; /* Adjust based on content and toggle width */
+    padding: 5px 15px; /* Adjust padding for better spacing */
+    box-shadow: none; /* Remove inner column shadow */
+    background-color: transparent; /* Remove inner column background */
+}
+
+.system-control-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 5px 0; Removed as parent col has padding */
+}
+
+
+/* Toggle Switch Styling (from previous example, slightly refined) */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    flex-shrink: 0; /* Prevent switch from shrinking */
+    margin-left: 10px; /* Space between text and toggle */
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders (if needed, though already set in general .slider) */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* System Status Styling */
+.system-status-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.status-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #5cb85c; /* Green dot */
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+/* Sensor Measurement Styling */
+.sensor-row {
+    align-items: stretch; /* Make all items in the row have the same height */
+    justify-content: flex-start; /* Align sensor cards to the left */
+    gap: 10px; /* Reduce gap slightly for more cards */
+}
+
+.sensor-card {
+    background-color: #eee; /* Lighter grey for sensor cards */
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    width: calc((100% - (6 * 10px) - (20px)) / 7); /* Roughly 6 cards + info box */
+    /* Adjust width to accommodate 6 cards + info box more evenly */
+    min-width: 100px; /* Minimum width for each card to avoid squishing */
+    box-sizing: border-box;
+    flex-grow: 1; /* Allow cards to grow if space permits */
+    display: flex; /* Use flexbox for internal alignment */
+    flex-direction: column; /* Stack name/text vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    margin-bottom: 5px; /* Small margin for wrap if needed */
+}
+
+.sensor-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.sensor-detail {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.sensor-info-col {
+    flex: 1; /* Allow it to take available space */
+    min-width: 180px; /* Minimum width for info box */
+    padding: 0; /* Remove padding as inner box has it */
+    background-color: transparent; /* Remove background as inner box has it */
+    box-shadow: none; /* Remove shadow */
+    display: flex; /* Ensure it behaves like a flex item */
+    align-items: stretch; /* Stretch to fill height of other sensor cards */
+}
+
+.sensor-info-box {
+    background-color: #d9edf7; /* Light blue background for info box */
+    border-radius: 6px;
+    padding: 10px;
+    height: 100%; /* Fill the height of its parent .col */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%; /* Make it fill its column */
+    font-weight: bold;
+    color: #31708f; /* Darker blue text */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Responsive Design - Media Queries */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+    }
+
+    .col {
+        min-width: unset; /* Remove min-width to allow full width */
+        width: 100%; /* Take full width */
+    }
+
+    /* Specific adjustments for control items on smaller screens */
+    .control-row {
+        flex-direction: row; /* Keep them in a row for 2 columns */
+        flex-wrap: wrap;
+        justify-content: space-around; /* Distribute evenly */
+    }
+    .control-item-col {
+        width: calc(50% - 15px); /* 2 items per row */
+        min-width: unset;
+        margin-bottom: 10px;
+    }
+
+    .sensor-row {
+        flex-direction: row; /* Keep sensors in a row on tablets */
+        flex-wrap: wrap;
+        justify-content: center; /* Center items */
+    }
+
+    .sensor-card {
+        width: calc(33.333% - 15px); /* 3 columns on tablets */
+        min-width: 120px; /* Ensure they don't get too small */
+    }
+
+    .sensor-info-col {
+        width: 100%; /* Take full width on tablets */
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .header p {
+        font-size: 1em;
+    }
+
+    .section-title {
+        font-size: 1.1em;
+    }
+
+    .control-item-col {
+        width: 100%; /* 1 column for control items on small phones */
+    }
+
+    .sensor-card {
+        width: calc(50% - 10px); /* 2 columns on very small screens */
+    }
+
+    .sensor-info-col {
+        width: 100%; /* Take full width on very small screens */
+    }
 }

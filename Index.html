@@ -1,12 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="Style.css">
+    <title>Smart Farm System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>KUY I POD</h1>
+    <div class="container">
+        <div class="header">
+            <h1>Smart farm system</h1>
+            <p>ผักที่ดี ควบคุมได้ในมือคุณ</p>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="col graph-col">
+                    <div class="section-title">กราฟประวัติ</div>
+                    <div class="history-graph">
+                        กราฟแสดงข้อมูล
+                    </div>
+                </div>
+                <div class="col notification-col">
+                    <div class="section-title">การแจ้งเตือน</div>
+                    <div class="notification-list">
+                        <div class="notification-item">
+                            <span class="status-indicator red"></span>
+                            <span>น้ำเข้าสู่ระดับต่ำเกินไป! กรุณาเติมน้ำ</span>
+                        </div>
+                        <div class="notification-item">
+                            <span class="status-indicator yellow"></span>
+                            <span>ค่า pH ค่อนข้างสูง (6.7)</span>
+                        </div>
+                        <div class="notification-item">
+                            <span class="status-indicator green"></span>
+                            <span>อุณหภูมิปกติ (27.4)</span>
+                        </div>
+                        <div class="notification-item">
+                            <span class="status-indicator green"></span>
+                            <span>ความชื้นปกติ (70)</span>
+                        </div>
+                        <div class="notification-item">
+                            <span class="status-indicator green"></span>
+                            <span>ความเข้มแสงปกติ (840)</span>
+                        </div>
+                        <div class="notification-item">
+                            <span class="status-indicator green"></span>
+                            <span>ระบบการทำงานปกติ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title-with-controls">
+                <div class="section-title">การควบคุมระบบ</div>
+                <div class="control-mode-toggle">
+                    <button class="active" id="autoModeBtn">AUTO</button>
+                    <button id="manualModeBtn">Manual</button>
+                </div>
+            </div>
+            <div class="row control-row">
+                <div class="col control-item-col">
+                    <div class="system-control-item">
+                        <span>ทดสอบ</span>
+                        <label class="toggle-switch round">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col control-item-col">
+                    <div class="system-control-item">
+                        <span>ทดสอบ</span>
+                        <label class="toggle-switch round">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col control-item-col">
+                    <div class="system-control-item">
+                        <span>ทดสอบ</span>
+                        <label class="toggle-switch round">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col control-item-col">
+                    <div class="system-control-item">
+                        <span>ทดสอบ</span>
+                        <label class="toggle-switch round">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="col status-col">
+                    <div class="section-title">สถานะระบบ</div>
+                    <div class="system-status-list">
+                        <div class="system-status-item"><span class="status-dot green"></span>การจ่ายไฟ (ปกติ)</div>
+                        <div class="system-status-item"><span class="status-dot green"></span>การจ่ายไฟ (ปกติ)</div>
+                        <div class="system-status-item"><span class="status-dot green"></span>การจ่ายไฟ (ปกติ)</div>
+                        <div class="system-status-item"><span class="status-dot green"></span>การจ่ายไฟ (ปกติ)</div>
+                        <div class="system-status-item"><span class="status-dot green"></span>การจ่ายไฟ (ปกติ)</div>
+                    </div>
+                </div>
+                <div class="col log-col">
+                    <div class="section-title">การบันทึกของระบบ</div>
+                    <div class="system-log-display">
+                        ข้อมูลบันทึก
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">การตรวจวัด Sensor</div>
+            <div class="row sensor-row">
+                <div class="sensor-card">
+                    <div class="sensor-name">Sensor</div>
+                    <div class="sensor-detail">name</div>
+                    <div class="sensor-detail">text</div>
+                </div>
+                <div class="sensor-card">
+                    <div class="sensor-name">Sensor</div>
+                    <div class="sensor-detail">name</div>
+                    <div class="sensor-detail">text</div>
+                </div>
+                <div class="sensor-card">
+                    <div class="sensor-name">Sensor</div>
+                    <div class="sensor-detail">name</div>
+                    <div class="sensor-detail">text</div>
+                </div>
+                <div class="sensor-card">
+                    <div class="sensor-name">Sensor</div>
+                    <div class="sensor-detail">name</div>
+                    <div class="sensor-detail">text</div>
+                </div>
+                <div class="sensor-card">
+                    <div class="sensor-name">Sensor</div>
+                    <div class="sensor-detail">name</div>
+                    <div class="sensor-detail">text</div>
+                </div>
+                <div class="sensor-card">
+                    <div class="sensor-name">Sensor</div>
+                    <div class="sensor-detail">name</div>
+                    <div class="sensor-detail">text</div>
+                </div>
+                <div class="col sensor-info-col">
+                    <div class="sensor-info-box">
+                        ข้อมูลการทดสอบ
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
