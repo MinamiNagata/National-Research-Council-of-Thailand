@@ -1,180 +1,261 @@
-/* General Body and Container Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0; /* Light grey background */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align to the top of the viewport */
-    min-height: 100vh; /* Full viewport height */
-    padding: 20px;
+/* General Styles */
+body, html {
     margin: 0;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    scroll-behavior: smooth; /* Smooth scrolling for navigation if added */
 }
 
-.container {
-    background-color: #ffffff; /* White background for the main content area */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    width: 100%;
-    /* Adjusted max-width for 1920x1080 screens */
-    max-width: 1200px; /* Increased from 900px to better fit larger screens */
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Header Styling */
-.header {
-    background-color: #4CAF50; /* Green header background */
+/* Base section styling for consistent background */
+.section-bg-green {
+    background-color: #2b572b; /* สีเขียวเข้มพื้นหลังหลักของ Dashboard */
     color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: center;
+    padding: 40px 0; /* Padding บนล่างสำหรับแต่ละ section */
+    min-height: 100vh; /* ทำให้แต่ละ section มีความสูงอย่างน้อยเท่ากับ viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    box-sizing: border-box; /* ทำให้ padding ไม่เพิ่มขนาดรวม */
 }
 
-.header h1 {
-    margin: 0;
-    font-size: 1.8em;
-}
-
-.header p {
-    margin: 5px 0 0;
-    font-size: 1.1em;
-}
-
-/* Section Styling */
-.section {
-    background-color: #e0e0e0; /* Lighter grey for individual sections */
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for a recessed look */
+.section-container {
+    width: 90%;
+    max-width: 1200px; /* จำกัดความกว้างสูงสุด */
+    display: flex;
+    flex-wrap: wrap; /* ให้ items ขึ้นบรรทัดใหม่ได้ */
+    gap: 20px; /* ระยะห่างระหว่าง box ย่อย */
+    margin: auto; /* จัดกึ่งกลางแนวนอน */
 }
 
 .section-title {
-    font-size: 1.3em;
+    font-size: 1.8em;
     font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-/* Flexbox for Rows and Columns */
-.row {
+    margin-bottom: 20px;
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    gap: 15px; /* Space between flex items */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* ทำให้ title เต็มความกว้างของ container ย่อย */
 }
 
-.col {
-    flex: 1; /* Allow columns to grow and shrink */
-    /* Adjusted min-width for columns on larger screens */
-    min-width: 350px; /* Increased from 300px for larger displays */
-    background-color: #f9f9f9; /* Slightly off-white for columns */
-    border-radius: 6px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Lighter shadow for inner columns */
+/* --- Hero Section (หน้าแรก) --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* ทำให้เต็มจอ */
+    background-image: url('luke-moore-gywy1VjNTu8-unsplash.jpg'); /* ตรวจสอบ path นี้! */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    overflow: hidden; /* ป้องกัน scrollbar ที่ไม่จำเป็น */
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px; /* ความสูงของแถบเขียวบน */
+    background-color: rgba(43, 87, 43, 0.9); /* เขียวเข้มโปร่งแสง */
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
     box-sizing: border-box;
+    z-index: 10; /* ให้ header อยู่ด้านบน */
 }
 
-/* Specific Styles for Graph and Log Display */
-.history-graph,
-.system-log-display {
-    background-color: #333; /* Dark background as seen in the image */
-    height: 200px; /* Fixed height for visual consistency */
+.header-text-left {
+    position: absolute; /* เปลี่ยนจาก top/left absolute เป็นภายใน header-overlay */
+    /* top: 15px; */ /* ไม่จำเป็นต้องกำหนด top/left เมื่ออยู่ใน flex container และใช้ padding */
+    left: 20px;
+    z-index: 11;
+}
+
+.header-text-left h1 {
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
+    line-height: 0.8;
+    color: white;
+}
+
+.header-text-left h2 {
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
+    background-color: #2b572b; /* เขียวเข้มสำหรับ FARM */
+    display: inline-block;
+    padding: 0 5px;
+    color: white;
+    line-height: 1;
+}
+
+.main-text-overlay {
+    margin-top: 100px; /* ดันข้อความลงมาใต้ header */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 5; /* ให้อยู่เหนือพื้นหลัง แต่ใต้ header */
+}
+
+.main-text-overlay h1 {
+    font-size: 4em;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.main-text-overlay p {
+    font-size: 1.5em;
+    color: white;
+}
+
+/* --- Dashboard Section (กราฟประวัติและการแจ้งเตือน) --- */
+.dashboard-section .section-container {
+    align-items: flex-start; /* จัดให้อยู่ด้านบนในแนวตั้ง */
+}
+
+.graph-section {
+    flex: 2; /* ทำให้กราฟกว้างกว่า */
+    min-width: 450px; /* กำหนดความกว้างขั้นต่ำ */
+    background-color: #3b763b; /* เขียวเข้มกว่าพื้นหลัง */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.graph-placeholder {
+    background-color: black;
+    height: 350px;
     border-radius: 5px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #aaa; /* Light grey text for placeholders */
-    font-size: 0.9em;
+    color: #ccc;
+    font-size: 1.2em;
 }
 
-/* Notification List Styling */
-.notification-item {
+.alert-section {
+    flex: 1; /* ทำให้ส่วนแจ้งเตือนแคบกว่า */
+    min-width: 300px; /* ความกว้างขั้นต่ำ */
+    background-color: #3b763b;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-    font-size: 0.95em;
+    flex-direction: column;
 }
 
-.status-indicator {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%; /* Circle shape */
-    display: inline-block;
-    margin-right: 10px;
-    flex-shrink: 0; /* Prevent the dot from shrinking */
+.alert-section .section-title {
+    margin-bottom: 20px; /* เพิ่ม margin-bottom ให้ title */
 }
 
-.status-indicator.red { background-color: #ff4d4d; } /* Red for critical */
-.status-indicator.yellow { background-color: #ffd700; } /* Yellow for warning */
-.status-indicator.green { background-color: #5cb85c; } /* Green for normal */
-
-/* System Control Section Styling */
-.section-title-with-controls {
+.mode-toggle {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-.control-mode-toggle {
-    background-color: #d0d0d0; /* Grey background for toggle buttons */
-    border-radius: 20px;
-    padding: 5px;
-    display: inline-flex; /* Arrange buttons side-by-side */
-    gap: 5px;
-}
-
-.control-mode-toggle button {
+.mode-toggle button {
     background-color: transparent;
     border: none;
+    color: white;
     padding: 8px 15px;
-    border-radius: 15px;
     cursor: pointer;
     font-weight: bold;
-    color: #555;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
 }
 
-.control-mode-toggle button.active {
-    background-color: #4CAF50; /* Green for active button */
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for active state */
+.mode-toggle button.active {
+    background-color: #4CAF50; /* เขียวเมื่อ active */
 }
 
-/* Specific styling for control items to match first image */
-.control-row {
-    justify-content: flex-start;
+.mode-toggle button.manual-btn {
+    border-right: 1px solid white;
 }
 
-.control-item-col {
-    flex: unset; /* Override default flex behavior */
-    width: auto; /* Take only necessary width */
-    min-width: 120px; /* Adjust based on content and toggle width */
-    padding: 5px 15px; /* Adjust padding for better spacing */
-    box-shadow: none; /* Remove inner column shadow */
-    background-color: transparent; /* Remove inner column background */
+.alert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.system-control-item {
+.alert-item {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 12px 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    font-size: 1.1em;
+    gap: 10px;
 }
 
+.status-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
 
-/* Toggle Switch Styling (from previous example, slightly refined) */
-.toggle-switch {
+.alert-item.error .status-dot { background-color: red; }
+.alert-item.warning .status-dot { background-color: yellow; }
+.alert-item.normal .status-dot { background-color: limegreen; }
+
+.alert-item.error { background-color: rgba(255, 0, 0, 0.2); }
+.alert-item.warning { background-color: rgba(255, 255, 0, 0.2); }
+
+
+/* --- Control Section (การควบคุมระบบ) --- */
+.control-section .section-container {
+    flex-direction: column; /* จัดให้เนื้อหาเรียงลงมา */
+    align-items: flex-start;
+}
+
+.full-width-panel {
+    width: 100%;
+    background-color: #3b763b;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* ปรับตามจำนวนคอลัมน์ */
+    gap: 20px;
+}
+
+.control-item {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Toggle Switch Styling */
+.switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
-    flex-shrink: 0; /* Prevent switch from shrinking */
-    margin-left: 10px; /* Space between text and toggle */
 }
 
-.toggle-switch input {
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
@@ -187,9 +268,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #ccc; /* สีเทาเมื่อปิด */
+    -webkit-transition: .4s;
     transition: .4s;
-    border-radius: 34px;
 }
 
 .slider:before {
@@ -200,12 +281,12 @@ body {
     left: 4px;
     bottom: 4px;
     background-color: white;
+    -webkit-transition: .4s;
     transition: .4s;
-    border-radius: 50%;
 }
 
 input:checked + .slider {
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* สีเขียวเมื่อเปิด */
 }
 
 input:focus + .slider {
@@ -213,10 +294,12 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
 
-/* Rounded sliders (if needed, though already set in general .slider) */
+/* Rounded sliders */
 .slider.round {
     border-radius: 34px;
 }
@@ -225,162 +308,240 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-/* System Status Styling */
-.system-status-item {
+/* Status and Log sections */
+.status-log-flex {
     display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-    font-size: 0.95em;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%; /* ให้เต็มความกว้าง */
 }
 
-.status-dot {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #5cb85c; /* Green dot */
-    margin-right: 10px;
-    flex-shrink: 0;
+.status-section {
+    flex: 1;
+    min-width: 300px;
+    background-color: #3b763b;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Sensor Measurement Styling */
-.sensor-row {
-    align-items: stretch; /* Make all items in the row have the same height */
-    justify-content: flex-start; /* Align sensor cards to the left */
-    gap: 15px; /* Revert gap back to 15px for wider spacing on large screens */
+.status-list .alert-item {
+    background-color: rgba(0, 0, 0, 0.2); /* พื้นหลังใสเล็กน้อย */
+    margin-bottom: 10px; /* เพิ่มระยะห่างระหว่าง item */
+}
+.status-list .alert-item:last-child {
+    margin-bottom: 0; /* ไม่มี margin ที่ item สุดท้าย */
 }
 
-.sensor-card {
-    background-color: #eee; /* Lighter grey for sensor cards */
-    border-radius: 6px;
-    padding: 10px;
-    text-align: center;
-    /* Adjusted width for more flexible sizing on large screens, allowing more cards per row if possible */
-    width: calc((100% - (6 * 15px)) / 7); /* Adjusted for 6 cards + info box with 15px gap */
-    min-width: 120px; /* Ensure they don't get too small */
-    box-sizing: border-box;
-    flex-grow: 1; /* Allow cards to grow if space permits */
-    display: flex; /* Use flexbox for internal alignment */
-    flex-direction: column; /* Stack name/text vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    margin-bottom: 5px; /* Small margin for wrap if needed */
+.log-section {
+    flex: 1;
+    min-width: 300px;
+    background-color: #3b763b;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.sensor-name {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 1.1em;
-    color: #333;
-}
-
-.sensor-detail {
-    font-size: 0.9em;
-    color: #666;
-}
-
-.sensor-info-col {
-    flex: 1; /* Allow it to take available space */
-    min-width: 200px; /* Increased min-width for info box on large screens */
-    padding: 0; /* Remove padding as inner box has it */
-    background-color: transparent; /* Remove background as inner box has it */
-    box-shadow: none; /* Remove shadow */
-    display: flex; /* Ensure it behaves like a flex item */
-    align-items: stretch; /* Stretch to fill height of other sensor cards */
-}
-
-.sensor-info-box {
-    background-color: #333; /* Light blue background for info box */
-    border-radius: 6px;
-    padding: 80px;
-    height: 100%; /* Fill the height of its parent .col */
+.log-placeholder {
+    background-color: black;
+    height: 250px; /* ความสูงของพื้นที่ log */
+    border-radius: 5px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    color: #ccc;
+    font-size: 1.1em;
+    overflow-y: auto; /* ให้ scroll ได้ถ้าข้อความเยอะ */
+}
+
+/* --- Sensor Monitoring Section (การตรวจวัด Sensor) --- */
+.sensor-section .section-container {
+    flex-direction: column; /* จัดให้เนื้อหาเรียงลงมา */
+    align-items: flex-start;
+}
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* ปรับตามจำนวนคอลัมน์และขนาด */
+    gap: 20px;
+    width: 100%;
+}
+
+.sensor-card {
+    background-color: rgba(128, 128, 128, 0.4); /* สีเทาโปร่งแสง */
+    border-radius: 10px;
+    padding: 15px;
     text-align: center;
-    width: 100%; /* Make it fill its column */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sensor-name {
+    font-size: 1.3em;
     font-weight: bold;
-    color: #ffffff; /* Darker blue text */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.sensor-details p {
+    margin: 2px 0;
+    font-size: 0.95em;
+    color: #eee;
+}
+
+.sensor-test-data {
+    background-color: rgb(20, 78, 24); /* สีดำตามภาพ */
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    grid-column: span 1; /* ใช้ 1 คอลัมน์ */
+    /* ปรับให้ขยายตามขนาด sensor-grid ถ้าจำเป็น */
+    /* ถ้าต้องการให้กินพื้นที่เท่า 2 card: grid-column: span 2; */
+    height: 450px;
+    width: 600px;
+}
+
+.sensor-test-data .sensor-name {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.test-data-placeholder {
+    background-color: black; /* พื้นหลังดำเหมือนตัวมันเอง */
+    height: 100%; /* ความสูงสำหรับข้อมูลทดสอบ */
+    width: 100%; /* เต็มความกว้างของ card */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+    font-size: 1.1em;
+    overflow-y: auto;
 }
 
 
-/* Responsive Design - Media Queries */
-/* No specific changes for > 1200px needed, as max-width handles it */
-
-@media (max-width: 1200px) {
-    .container {
-        /* This media query can be used to set max-width for screens smaller than 1920 but larger than 768 */
-        max-width: 900px; /* Revert to 900px for smaller desktops/laptops */
+/* --- Responsive Design (สำหรับมือถือและจอเล็ก) --- */
+@media (max-width: 1024px) {
+    .header-text-left h1, .header-text-left h2 {
+        font-size: 2.5em; /* ลดขนาด font header */
+    }
+    .main-text-overlay h1 {
+        font-size: 3.5em; /* ลดขนาด font main title */
+    }
+    .main-text-overlay p {
+        font-size: 1.3em;
     }
 
-    .col {
-        min-width: 300px; /* Adjust min-width for medium screens */
+    .section-container {
+        width: 95%; /* ขยายความกว้างสำหรับจอเล็ก */
+    }
+
+    .graph-section, .alert-section {
+        min-width: unset; /* ลบ min-width */
+        width: 100%; /* ให้เต็มความกว้าง */
+    }
+
+    .control-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* ลดขนาด minmax */
+    }
+
+    .sensor-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* ลดขนาด minmax */
+    }
+
+    .sensor-test-data {
+        grid-column: span 2; /* ขยายสำหรับจอเล็ก ถ้าต้องการ */
     }
 }
 
 @media (max-width: 768px) {
-    .row {
-        flex-direction: column; /* Stacks columns vertically on smaller screens */
+    .header-overlay {
+        height: 90px; /* ลดความสูง header */
+        padding-left: 15px;
+    }
+    .header-text-left h1, .header-text-left h2 {
+        font-size: 2em;
+    }
+    .main-text-overlay {
+        margin-top: 80px;
+    }
+    .main-text-overlay h1 {
+        font-size: 3em;
+    }
+    .main-text-overlay p {
+        font-size: 1.1em;
     }
 
-    .col {
-        min-width: unset; /* Removes min-width to allow full width */
-        width: 100%; /* Takes full width */
+    .section-title {
+        font-size: 1.5em;
+    }
+    .mode-toggle button {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+    .alert-item {
+        font-size: 1em;
+        padding: 10px;
     }
 
-    /* Specific adjustments for control items on smaller screens */
-    .control-row {
-        flex-direction: row; /* Keep them in a row for 2 columns */
-        flex-wrap: wrap;
-        justify-content: space-around; /* Distribute evenly */
+    .graph-placeholder, .log-placeholder, .test-data-placeholder {
+        height: 250px; /* ลดความสูงของพื้นที่ placeholder */
     }
-    .control-item-col {
-        width: calc(50% - 15px); /* 2 items per row */
+
+    .control-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .status-section, .log-section {
         min-width: unset;
-        margin-bottom: 10px;
+        width: 100%;
     }
-
-    .sensor-row {
-        flex-direction: row; /* Keep sensors in a row on tablets */
-        flex-wrap: wrap;
-        justify-content: center; /* Center items */
+    .sensor-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
-
     .sensor-card {
-        width: calc(33.333% - 15px); /* 3 columns on tablets */
-        min-width: 120px; /* Ensure they don't get too small */
+        padding: 10px;
     }
-
-    .sensor-info-col {
-        width: 100%; /* Take full width on tablets */
-        min-width: unset;
+    .sensor-name {
+        font-size: 1.1em;
+    }
+    .sensor-details p {
+        font-size: 0.85em;
     }
 }
 
 @media (max-width: 480px) {
-    .header h1 {
+    .header-overlay {
+        height: 70px;
+        padding-left: 10px;
+    }
+    .header-text-left h1, .header-text-left h2 {
         font-size: 1.5em;
     }
-
-    .header p {
+    .main-text-overlay h1 {
+        font-size: 2.5em;
+    }
+    .main-text-overlay p {
         font-size: 1em;
     }
-
+    .section-container {
+        padding: 15px;
+    }
     .section-title {
-        font-size: 1.1em;
+        font-size: 1.3em;
     }
-
-    .control-item-col {
-        width: 100%; /* 1 column for control items on small phones */
+    .control-grid {
+        grid-template-columns: 1fr; /* เรียงเป็นคอลัมน์เดียว */
     }
-
-    .sensor-card {
-        width: calc(50% - 10px); /* 2 columns on very small screens */
+    .sensor-grid {
+        grid-template-columns: 1fr; /* เรียงเป็นคอลัมน์เดียว */
     }
-
-    .sensor-info-col {
-        width: 100%; /* Take full width on very small screens */
+    .sensor-test-data {
+        grid-column: span 1; /* กลับมาเป็น 1 คอลัมน์ */
     }
-    
 }
