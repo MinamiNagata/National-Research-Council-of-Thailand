@@ -45,7 +45,7 @@ body, html {
     position: relative;
     width: 100%;
     height: 100vh; /* ทำให้เต็มจอ */
-    background-image: url('luke-moore-gywy1VjNTu8-unsplash.jpg'); /* ตรวจสอบ path นี้! */
+    background-image: url('luke-moore-gywy1VjNTu8-unsplash.jpg'); /* Placeholder for the background image */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -73,8 +73,7 @@ body, html {
 }
 
 .header-text-left {
-    position: absolute; /* เปลี่ยนจาก top/left absolute เป็นภายใน header-overlay */
-    /* top: 15px; */ /* ไม่จำเป็นต้องกำหนด top/left เมื่ออยู่ใน flex container และใช้ padding */
+    position: absolute;
     left: 20px;
     z-index: 11;
 }
@@ -543,5 +542,7 @@ input:checked + .slider:before {
     }
     .sensor-test-data {
         grid-column: span 1; /* กลับมาเป็น 1 คอลัมน์ */
+        width: 100%; /* Make sure it takes full width on small screens */
+        height: 200px; /* Adjust height for smaller screens */
     }
 }

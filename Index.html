@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Farm System</title>
+    <title>Smart Farm Dashboard</title>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+
+    <!-- Hero Section (หน้าแรก) -->
     <section class="hero-section">
         <div class="header-overlay">
             <div class="header-text-left">
@@ -16,86 +18,88 @@
             </div>
         </div>
         <div class="main-text-overlay">
-            <h1>SMART FARM</h1>
-            <p>พืชพัก โตได้ในมือคุณ</p>
+            <h1>SMART FARM DASHBOARD</h1>
+            <p>ควบคุม ตรวจสอบ และจัดการฟาร์มของคุณอย่างชาญฉลาด</p>
         </div>
     </section>
 
-    <section class="dashboard-section section-bg-green">
+    <!-- Dashboard Section (กราฟประวัติและการแจ้งเตือน) -->
+    <section class="section-bg-green dashboard-section">
         <div class="section-container">
             <div class="graph-section">
-                <div class="section-title">กราฟประวัติ</div>
+                <div class="section-title">
+                    <span>กราฟประวัติ (Historical Graph)</span>
+                </div>
                 <div class="graph-placeholder">
-                    <p>พื้นที่สำหรับกราฟ</p>
+                    <span></span>
                 </div>
             </div>
 
             <div class="alert-section">
                 <div class="section-title">
-                    การแจ้งเตือน
+                    <span>การควบคุม</span>
                     <div class="mode-toggle">
-                        <button class="manual-btn" id="manualModeBtn">manual</button>
-                        <button class="auto-btn active" id="autoModeBtn">auto</button>
+                        <button class="auto-btn">AUTO</button>
+                        <button class="manual-btn active">MANUAL</button>
                     </div>
                 </div>
                 <div class="alert-list">
                     <div class="alert-item error">
                         <span class="status-dot"></span>
-                        น้ำอยู่ในระดับต่ำเกินไป! กรุณาเติมน้ำ
+                        อุณหภูมิสูงเกินไป (35°C)
                     </div>
                     <div class="alert-item warning">
                         <span class="status-dot"></span>
-                        ค่า pH ค่อนข้างสูง (6.7)
+                        ปั๊มน้ำทำงานผิดปกติ
                     </div>
                     <div class="alert-item normal">
                         <span class="status-dot"></span>
-                        อุณหภูมิปกติ (27.4)
+                        ระดับน้ำปกติ
                     </div>
                     <div class="alert-item normal">
                         <span class="status-dot"></span>
-                        ความชื้นปกติ (70)
+                        ระบบรดน้ำทำงานแล้ว
                     </div>
-                    <div class="alert-item normal">
+                    <div class="alert-item error">
                         <span class="status-dot"></span>
-                        ความเข้มแสงปกติ (840)
-                    </div>
-                    <div class="alert-item normal">
-                        <span class="status-dot"></span>
-                        ระบบการทำงานปกติ
+                        เซ็นเซอร์ความชื้นไม่ตอบสนอง
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="control-section section-bg-green">
+    <!-- Control Section (การควบคุมระบบ) -->
+    <section class="section-bg-green control-section">
         <div class="section-container">
+            <div class="section-title">
+                <span>การควบคุมระบบ (System Controls)</span>
+            </div>
             <div class="full-width-panel">
-                <div class="section-title">การควบคุมระบบ</div>
                 <div class="control-grid">
                     <div class="control-item">
-                        <p>ทดสอบ</p>
+                        <span>ปั๊มน้ำ 1</span>
                         <label class="switch">
                             <input type="checkbox" checked>
                             <span class="slider round"></span>
                         </label>
                     </div>
                     <div class="control-item">
-                        <p>ทดสอบ</p>
+                        <span>พัดลมระบายอากาศ</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="control-item">
+                        <span>ระบบไฟส่องสว่าง</span>
                         <label class="switch">
                             <input type="checkbox" checked>
                             <span class="slider round"></span>
                         </label>
                     </div>
                     <div class="control-item">
-                        <p>ทดสอบ</p>
-                        <label class="switch">
-                            <input type="checkbox" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <div class="control-item">
-                        <p>ทดสอบ</p>
+                        <span>ปั๊มน้ำ 2</span>
                         <label class="switch">
                             <input type="checkbox">
                             <span class="slider round"></span>
@@ -106,103 +110,104 @@
 
             <div class="status-log-flex">
                 <div class="status-section">
-                    <div class="section-title">สถานะระบบ</div>
+                    <div class="section-title">
+                        <span>สถานะระบบ (System Status)</span>
+                    </div>
                     <div class="status-list">
                         <div class="alert-item normal">
                             <span class="status-dot"></span>
-                            การจ่ายไฟ (ปกติ)
+                            ปั๊มน้ำ 1: ทำงานปกติ
+                        </div>
+                        <div class="alert-item error">
+                            <span class="status-dot"></span>
+                            ปั๊mน้ำ 2: ออฟไลน์
                         </div>
                         <div class="alert-item normal">
                             <span class="status-dot"></span>
-                            การจ่ายไฟ (ปกติ)
+                            พัดลม: ทำงานปกติ
                         </div>
                         <div class="alert-item normal">
                             <span class="status-dot"></span>
-                            การจ่ายไฟ (ปกติ)
-                        </div>
-                        <div class="alert-item normal">
-                            <span class="status-dot"></span>
-                            การจ่ายไฟ (ปกติ)
-                        </div>
-                        <div class="alert-item normal">
-                            <span class="status-dot"></span>
-                            การจ่ายไฟ (ปกติ)
+                            แสง: เปิดอยู่
                         </div>
                     </div>
                 </div>
 
                 <div class="log-section">
-                    <div class="section-title">การบันทึกของระบบ</div>
+                    <div class="section-title">
+                        <span>บันทึกกิจกรรม (Activity Log)</span>
+                    </div>
                     <div class="log-placeholder">
-                        <p>บันทึกการทำงาน...</p>
+                        <span></span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="sensor-section section-bg-green">
+    <!-- Sensor Monitoring Section (การตรวจวัด Sensor) -->
+    <section class="section-bg-green sensor-section">
         <div class="section-container">
-            <div class="section-title">การตรวจวัด Sensor</div>
-            <div class="sensor-grid">
-                <div class="sensor-card">
-                    <div class="sensor-name">Sensor</div>
-                    <div class="sensor-details">
-                        <p>name</p>
-                        <p>text</p>
-                        <p>text</p>
+            <div class="section-title">
+                <span>การตรวจวัด Sensor (Sensor Monitoring)</span>
+            </div>
+            <div class="full-width-panel flex flex-wrap gap-20 justify-center">
+                <div class="sensor-grid flex-1 min-w-[300px] max-w-[600px]">
+                    <div class="sensor-card">
+                        <span class="sensor-name">อุณหภูมิ (Temperature)</span>
+                        <div class="sensor-details">
+                            <p>ค่าปัจจุบัน: 28.5 °C</p>
+                            <p>สถานะ: ปกติ</p>
+                        </div>
+                    </div>
+                    <div class="sensor-card">
+                        <span class="sensor-name">ความชื้นในดิน (Soil Humidity)</span>
+                        <div class="sensor-details">
+                            <p>ค่าปัจจุบัน: 65%</p>
+                            <p>สถานะ: ปกติ</p>
+                        </div>
+                    </div>
+                    <div class="sensor-card">
+                        <span class="sensor-name">แสง (Light)</span>
+                        <div class="sensor-details">
+                            <p>ค่าปัจจุบัน: 800 Lux</p>
+                            <p>สถานะ: เพียงพอ</p>
+                        </div>
+                    </div>
+                    <div class="sensor-card">
+                        <span class="sensor-name">pH ในน้ำ (Water pH)</span>
+                        <div class="sensor-details">
+                            <p>ค่าปัจจุบัน: 6.8</p>
+                            <p>สถานะ: เหมาะสม</p>
+                        </div>
+                    </div>
+                    <div class="sensor-card">
+                        <span class="sensor-name">ระดับน้ำ (Water Level)</span>
+                        <div class="sensor-details">
+                            <p>ค่าปัจจุบัน: 75%</p>
+                            <p>สถานะ: สูง</p>
+                        </div>
+                    </div>
+                    <div class="sensor-card">
+                        <span class="sensor-name">ความนำไฟฟ้า (EC)</span>
+                        <div class="sensor-details">
+                            <p>ค่าปัจจุบัน: 1.2 mS/cm</p>
+                            <p>สถานะ: ปกติ</p>
+                        </div>
                     </div>
                 </div>
-                <div class="sensor-card">
-                    <div class="sensor-name">Sensor</div>
-                    <div class="sensor-details">
-                        <p>name</p>
-                        <p>text</p>
-                        <p>text</p>
-                    </div>
-                </div>
-                <div class="sensor-card">
-                    <div class="sensor-name">Sensor</div>
-                    <div class="sensor-details">
-                        <p>name</p>
-                        <p>text</p>
-                        <p>text</p>
-                    </div>
-                </div>
-                <div class="sensor-card">
-                    <div class="sensor-name">Sensor</div>
-                    <div class="sensor-details">
-                        <p>name</p>
-                        <p>text</p>
-                        <p>text</p>
-                    </div>
-                </div>
-                <div class="sensor-card">
-                    <div class="sensor-name">Sensor</div>
-                    <div class="sensor-details">
-                        <p>name</p>
-                        <p>text</p>
-                        <p>text</p>
-                    </div>
-                </div>
-                <div class="sensor-card">
-                    <div class="sensor-name">Sensor</div>
-                    <div class="sensor-details">
-                        <p>name</p>
-                        <p>text</p>
-                        <p>text</p>
-                    </div>
-                </div>
+
                 <div class="sensor-test-data">
-                    <div class="sensor-name">ข้อมูลการทดสอบ</div>
+                    <span class="sensor-name">ข้อมูลทดสอบ Sensor (Sensor Test Data)</span>
                     <div class="test-data-placeholder">
-                        <p>ข้อมูลทดสอบ...</p>
+                        <span></span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="js/script.js"></script>
+    <!-- External JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
