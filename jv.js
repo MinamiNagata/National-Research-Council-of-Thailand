@@ -1,21 +1,25 @@
-// JavaScript for toggle buttons
+// This is a placeholder for future JavaScript functionality.
+// For now, the page is visually functional with HTML and CSS.
+
 document.addEventListener('DOMContentLoaded', () => {
-    const autoBtn = document.querySelector('.auto-btn');
-    const manualBtn = document.querySelector('.manual-btn');
+    // Example of how you could add interactivity in the future.
+    // For instance, making the toggle switches log their state to the console.
 
-    if (autoBtn && manualBtn) {
-        autoBtn.addEventListener('click', () => {
-            autoBtn.classList.add('active');
-            manualBtn.classList.remove('active');
-            // Add logic for auto mode
-            console.log('โหมดอัตโนมัติทำงาน');
-        });
+    const toggles = document.querySelectorAll('.switch input[type="checkbox"]');
 
-        manualBtn.addEventListener('click', () => {
-            manualBtn.classList.add('active');
-            autoBtn.classList.remove('active');
-            // Add logic for manual mode
-            console.log('โหมดควบคุมเองทำงาน');
+    toggles.forEach(toggle => {
+        toggle.addEventListener('change', (event) => {
+            const status = event.target.checked ? 'ON' : 'OFF';
+            // Find the associated button text if it exists
+            const controlButton = event.target.closest('.control-button');
+            if (controlButton) {
+                const buttonText = controlButton.querySelector('button').textContent;
+                 console.log(`'${buttonText}' toggle is now ${status}`);
+            } else {
+                 console.log(`A toggle was switched ${status}`);
+            }
         });
-    }
+    });
+
+    console.log("Smart Farm Dashboard Initialized.");
 });
